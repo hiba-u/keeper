@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function CreateArea(props) {
 
-  const [note, setNote] = useState({})
+  const [note, setNote] = useState({title:"", content: ""})
 
   function handleChange(e){
     const {name, value} = e.target;

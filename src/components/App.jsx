@@ -3,7 +3,6 @@ import Header from "./Header";
 import CreateArea from './CreateArea'
 import Note from "./Note"
 import Footer from "./Footer"
-import notes from './../notes'
 
 
 const App = () => {
@@ -15,13 +14,21 @@ const App = () => {
         })
     }
 
+    const deleteNote = (id) =>{
+        const newNotes = notes.filter((note, index) => {
+            return index !== id
+        })
+        
+        setNotes(newNotes);
+    }
+
     return(
         <>
             <Header />
             <CreateArea addNote={addNote}/>
-            {notes.map((note) => {
+            {notes.map((note, index) => {
                 return (
-                    <Note key={note.id} title={note.title} content={note.content}/>
+                    <Note key={index} title={note.title} content={note.content} onDelete={deleteNote} id={index}/>
                 )
             })}
             <Footer />
